@@ -4,27 +4,28 @@ let resetButton = document.getElementsByClassName('reset')[0]
 let strScoreOne = document.getElementsByClassName('playerOneScore')[0].textContent
 let strScoreTwo = document.getElementsByClassName('playerTwoScore')[0].textContent
 let targetValue = document.getElementById('input')
+let target = document.getElementById('target')
 let scoreOne = Number(strScoreOne)
 let scoreTwo = Number(strScoreTwo)
 
 
 
 playerOne.addEventListener('click', () => {
-  if (scoreOne !== Number(document.getElementById('target').textContent) && scoreTwo !== Number(document.getElementById('target').textContent)) {
+  if (scoreOne !== Number(target.textContent) && scoreTwo !== Number(target.textContent)) {
     scoreOne++
     document.getElementsByClassName('playerOneScore')[0].textContent = scoreOne
   }
-  if (scoreOne === Number(document.getElementById('target').textContent)) {
+  if (scoreOne === Number(target.textContent)) {
     document.getElementsByClassName('playerOneScore')[0].classList.add('color')
   }
 })
 
 playerTwo.addEventListener('click', () => {
-  if (scoreOne !== Number(document.getElementById('target').textContent) && scoreTwo !== Number(document.getElementById('target').textContent)) {
+  if (scoreOne !== Number(target.textContent) && scoreTwo !== Number(target.textContent)) {
     scoreTwo++
     document.getElementsByClassName('playerTwoScore')[0].textContent = scoreTwo
   }
-  if (scoreTwo === Number(document.getElementById('target').textContent)) {
+  if (scoreTwo === Number(target.textContent)) {
     document.getElementsByClassName('playerTwoScore')[0].classList.add('color')
   }
 })
@@ -32,8 +33,8 @@ playerTwo.addEventListener('click', () => {
 resetButton.addEventListener('click', reset)
 
 targetValue.addEventListener('change', () => {
+  target.textContent = targetValue.value
   reset()
-  document.getElementById('target').textContent = this.value
 })
 
 function reset() {
